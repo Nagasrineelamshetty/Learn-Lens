@@ -7,6 +7,8 @@ import { QuizInterface } from './components/QuizInterface';
 import { ScoreDisplay } from './components/ScoreDisplay';
 import { ProcessingStatus } from './components/ProcessingStatus';
 import { QuizData, ScoreData, UploadState, ProcessingState } from './types';
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
@@ -53,7 +55,7 @@ function App() {
     });
 
     try {
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post(`${API_URL}/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
